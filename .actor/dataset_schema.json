@@ -1,0 +1,40 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "type": "object",
+    "properties": {
+      "recordType": {
+        "type": "string",
+        "description": "Classification: chokepoint_telemetry, daily_transit_point, live_ais_vessel, security_incident_2026, vessel_dossier, or bunker_freight_model"
+      },
+      "chokepointName": {
+        "type": "string",
+        "description": "Strategic maritime passage, region, or vessel routing corridor"
+      },
+      "timestamp": {
+        "type": "string",
+        "description": "ISO 8601 extraction timestamp"
+      },
+      "data": {
+        "type": "object",
+        "description": "Detailed telemetry or intelligence payload"
+      }
+    },
+    "required": ["recordType", "chokepointName", "timestamp", "data"]
+  },
+  "views": {
+    "overview": {
+      "title": "Maritime Intelligence Feed",
+      "transformation": {
+        "fields": [
+          "recordType",
+          "chokepointName",
+          "timestamp"
+        ]
+      },
+      "display": {
+        "component": "table"
+      }
+    }
+  }
+}
