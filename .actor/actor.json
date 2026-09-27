@@ -1,16 +1,16 @@
 {
-    "actorSpecification": 1,
-    "name": "marine-traffic-actor",
-    "title": "Global Maritime Traffic & Supply Chain Intelligence Actor (PortWatch, AIS, UKMTO & Bunker Freight)",
-    "description": "Extracts real-time UN/IMF PortWatch satellite maritime transit volumes, live AIS fleet radar, 2026 UK naval security attack ledgers (UKMTO & Ambrey London), global IMO vessel registries, and marine bunker fuel rerouting economic simulations.",
-    "version": "1.0.0",
-    "meta": {
-        "templateId": "python-start"
-    },
-    "dockerfile": "./Dockerfile",
-    "input": "./input_schema.json",
-    "output": "./output_schema.json",
-    "storages": {
-        "dataset": "./output_schema.json"
-    }
+  "actorSpecification": 1,
+  "name": "marine-traffic-actor",
+  "title": "Global Maritime Traffic & Supply Chain Intelligence Actor (PortWatch, AIS, UKMTO & Bunker Freight)",
+  "description": "Extracts real-time UN/IMF PortWatch satellite maritime transit volumes, live AIS fleet radar, 2026 UK naval security attack ledgers (UKMTO & Ambrey London), global IMO vessel registries, and marine bunker fuel rerouting economic simulations.",
+  "version": "1.0",
+  "meta": {
+    "templateId": "python-empty"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "output": "./output_schema.json"
 }
