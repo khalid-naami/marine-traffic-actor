@@ -1,0 +1,70 @@
+{
+    "title": "Global Maritime Traffic & Intelligence Input Schema",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "chokepoints": {
+            "title": "Strategic Chokepoints",
+            "type": "array",
+            "description": "List of global passages to analyze. Select specific waterways or leave empty for ALL global chokepoints.",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "ALL",
+                    "Bab el-Mandeb Strait",
+                    "Suez Canal",
+                    "Strait of Hormuz",
+                    "Strait of Malacca",
+                    "Panama Canal",
+                    "Strait of Gibraltar",
+                    "Turkish Straits (Bosporus/Dardanelles)",
+                    "Strait of Dover (English Channel)",
+                    "Cape of Good Hope"
+                ]
+            },
+            "default": ["ALL"],
+            "prefill": ["ALL"]
+        },
+        "daysBack": {
+            "title": "Time Series Lookback (Days)",
+            "type": "integer",
+            "description": "Number of historical days for daily vessel counts, capacity time-series, and 30-day disruption diagnostics.",
+            "default": 180,
+            "minimum": 7,
+            "maximum": 365,
+            "unit": "days"
+        },
+        "includeLiveAIS": {
+            "title": "Include Live AIS Fleet Radar",
+            "type": "boolean",
+            "description": "Extract active transiting vessels with GPS coordinates, speed, flag, cargo manifest, and MMSI identifiers.",
+            "default": true
+        },
+        "includeSecurityLedger": {
+            "title": "Include 2026 UK Naval Incidents Ledger",
+            "type": "boolean",
+            "description": "Extract documented 2026 missile, drone, and USV strikes with UKMTO, Ambrey London, and Lloyd's JWC ratings.",
+            "default": true
+        },
+        "includeVesselRegistry": {
+            "title": "Include Global IMO Vessel Registry",
+            "type": "boolean",
+            "description": "Extract commercial fleet specifications, ownership chains, engine ratings, and War Risk routing statuses.",
+            "default": true
+        },
+        "includeBunkerEconomics": {
+            "title": "Include Marine Bunker Futures & Rerouting Modeler",
+            "type": "boolean",
+            "description": "Calculate 5-hub bunker fuel pricing (Singapore, Rotterdam, Gibraltar, Balboa, Houston) and geopolitical detour freight cost impacts.",
+            "default": true
+        },
+        "vesselSearchFilter": {
+            "title": "Optional Vessel Name / IMO Filter",
+            "type": "string",
+            "description": "Filter vessel registry by specific Ship Name, IMO, or Operator (e.g. 'EVER GIVEN', '9929429', 'Maersk', 'Frontline').",
+            "editor": "textfield"
+        }
+    },
+    "required": ["chokepoints", "daysBack"]
+}
