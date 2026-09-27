@@ -1,24 +1,18 @@
 {
-    "actorOutputSchemaVersion": 1,
-    "title": "Global Maritime Traffic & Supply Chain Intelligence Output Schema",
-    "type": "object",
-    "properties": {
-        "recordType": {
-            "title": "Record Classification Type",
-            "type": "string",
-            "description": "Indicates the payload type: 'chokepoint_telemetry', 'daily_timeseries', 'live_ais_vessel', 'security_incident_2026', 'vessel_dossier', or 'bunker_rerouting_model'."
-        },
-        "chokepointName": {
-            "title": "Strategic Passage / Chokepoint Name",
-            "type": "string"
-        },
-        "timestamp": {
-            "title": "Record Extraction Timestamp (ISO 8601)",
-            "type": "string"
-        },
-        "data": {
-            "title": "Extracted Telemetry Payload",
-            "type": "object"
-        }
+  "actorOutputSchemaVersion": 1,
+  "title": "Global Maritime Traffic & Supply Chain Intelligence Output Schema",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Maritime Intelligence Dataset Results",
+      "description": "Real-time PortWatch satellite transits, AIS fleet radar, 2026 UK naval security attack ledgers, and bunker rerouting models",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    },
+    "summary": {
+      "type": "string",
+      "title": "Executive Summary & KPIs",
+      "description": "Master summary report and global chokepoint statistics",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT_EXECUTIVE_SUMMARY"
     }
+  }
 }
