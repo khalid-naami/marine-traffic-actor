@@ -1,18 +1,18 @@
 {
-  "actorOutputSchemaVersion": 1,
-  "title": "Global Maritime Traffic & Supply Chain Intelligence Output Schema",
-  "properties": {
-    "results": {
-      "type": "string",
-      "title": "Maritime Intelligence Dataset Results",
-      "description": "Real-time PortWatch satellite transits, AIS fleet radar, 2026 UK naval security attack ledgers, and bunker rerouting models",
-      "template": "{{links.apiDefaultDatasetUrl}}/items"
-    },
-    "summary": {
-      "type": "string",
-      "title": "Executive Summary & KPIs",
-      "description": "Master summary report and global chokepoint statistics",
-      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT_EXECUTIVE_SUMMARY"
+    "actorOutputSchemaVersion": 1,
+    "title": "Global Maritime Traffic & Supply Chain Intelligence Output Schema",
+    "properties": {
+        "results": {
+            "type": "string",
+            "title": "Dataset Items",
+            "description": "Dataset items and records produced by the Actor",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        },
+        "overview": {
+            "type": "string",
+            "title": "Summary Payload",
+            "description": "Summary report stored in Key-Value store",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+        }
     }
-  }
 }
