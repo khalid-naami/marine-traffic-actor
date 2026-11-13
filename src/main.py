@@ -152,9 +152,13 @@ async def main() -> None:
             "chokepoints_analyzed": len(selected_chokepoints),
             "brent_crude_benchmark_usd": get_live_brent_price(),
             "total_records_pushed": pushed_records_count,
-            "status": "SUCCESS"
+            "status": "SUCCESS" if pushed_records_count > 0 else "NO_DATA",
         }
+        await Actor.set_value("OUTPUT", exec_summary)
         await Actor.set_value("OUTPUT_EXECUTIVE_SUMMARY", exec_summary)
+        if pushed_records_count == 0:
+            await Actor.fail(status_message="Maritime Intelligence Actor produced 0 records.")
+            return
 
         Actor.log.info(f"✅ Maritime Intelligence Actor finished successfully! Total {pushed_records_count} records pushed to Apify Dataset.")
 
