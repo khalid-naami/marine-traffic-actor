@@ -1,0 +1,10 @@
+{
+  "actorKeyValueStoreSchemaVersion": 1,
+  "title": "Global Maritime Traffic Key-Value Store Schema",
+  "collections": {
+    "summaries": {
+      "title": "Run Output Summary",
+      "keyPrefix": "OUTPUT"
+    }
+  }
+}
