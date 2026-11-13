@@ -2,7 +2,7 @@
 PortWatch (IMF / UN Global Platform) Maritime Chokepoints & Time Series Client.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 import requests
 import pandas as pd
 import numpy as np
@@ -203,7 +203,11 @@ def get_chokepoint_timeseries(port_id: str, days_back: int = 180):
             raw_data = [f.get("attributes", {}) for f in features]
             if raw_data:
                 for r in raw_data:
-                    dt = datetime.fromtimestamp(r['date'] / 1000.0) if 'date' in r and r['date'] else datetime.now()
+                    dt = (
+                        datetime.fromtimestamp(r['date'] / 1000.0, tz=timezone.utc)
+                        if 'date' in r and r['date']
+                        else datetime.now(timezone.utc)
+                    )
                     records.append({
                         "date": dt.strftime("%Y-%m-%d"),
                         "transits_total": int(r.get('n_total', 0)),
@@ -217,7 +221,7 @@ def get_chokepoint_timeseries(port_id: str, days_back: int = 180):
 
     if not records:
         # Generate synthetic realistic time series
-        base_dates = pd.date_range(end=datetime.now(), periods=days_back)
+        base_dates = pd.date_range(end=datetime.now(timezone.utc).replace(tzinfo=None), periods=days_back)
         np.random.seed(abs(hash(port_id)) % 10000)
 
         if port_id in ["choke002", "choke003"]:
